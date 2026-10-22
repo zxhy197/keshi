@@ -1,11 +1,22 @@
 /* 刻时 KESHI — 轻量应用外壳缓存。数据（任务/设置/音频）一律不经过 Service Worker，只存本机。 */
-const CACHE = 'keshi-shell-v3'
+const CACHE = 'keshi-shell-v4'
 
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches
       .open(CACHE)
-      .then((c) => c.addAll(['./', './index.html', './manifest.webmanifest', './icon.svg']))
+      .then((c) =>
+        c.addAll([
+          './',
+          './index.html',
+          './manifest.webmanifest',
+          './icon.svg',
+          './icons/icon-192.png',
+          './icons/icon-512.png',
+          './icons/icon-maskable-512.png',
+          './icons/apple-touch-icon.png'
+        ])
+      )
       .then(() => self.skipWaiting())
   )
 })
